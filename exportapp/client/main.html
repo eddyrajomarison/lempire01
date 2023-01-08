@@ -1,0 +1,52 @@
+<head>
+  <title>export</title>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class=" col-8">
+        <button type="button" class="btn btn-outline-info btn-sm export-btn">Export</button>
+      </div>
+    </div>
+    <hr>
+    <div class="row mt-5">
+      {{> list}}
+    </div>
+  </div>
+</body>
+
+
+<template name="list">
+  <div class="col-12">
+      {{#if exports}}
+        <ul class="list-group list-group-flush">
+          {{#each export in exports}}
+            <li class="list-group-item">
+              <div class="row">
+                <div class=" col-8 pt-1">
+                  <div class="progress">
+                    <div 
+                      class="progress-bar bg-info {{getAnimated export.progress}}"
+                      role="progressbar" 
+                      aria-label="Example with label" 
+                      {{progressStyle export.progress}}  
+                      aria-valuemin="0" 
+                      aria-valuemax="100"
+                    >
+                      {{export.progress}}%
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <a href="{{export.link}}" target="_blank">{{export.link}}</a>
+                </div>
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+      <h4> Aucun export</h4>
+      {{/if}}
+    </div>
+</template>
