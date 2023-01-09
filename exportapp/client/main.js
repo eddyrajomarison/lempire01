@@ -17,7 +17,6 @@ Template.list.onCreated(function bodyOnCreated() {
 
 Template.list.helpers({
   exports() {
-    console.log("main.js",  Exports.find({} ).fetch());
     return Exports.find().fetch();  
   },
   progressStyle(w) { return {
